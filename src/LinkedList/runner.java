@@ -9,6 +9,7 @@ public class runner {
         list.shovvList();
         list.deleteItem();
         list.shovvList();
+        list.append(123);
 
 
     }
