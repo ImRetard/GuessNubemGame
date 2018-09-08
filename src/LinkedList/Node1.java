@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.Scanner;
+
 public class Node1 {
     public int data;
     public Node1 nextNode;
@@ -16,6 +18,8 @@ public class Node1 {
     }
 
     public void setData(int data) {
+        Scanner ch=new Scanner(System.in);
+
         System.out.println("Please enter some data:");
         this.data = data;
     }
