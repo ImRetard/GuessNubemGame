@@ -16,6 +16,7 @@ public class Node1 {
     }
 
     public void setData(int data) {
+        System.out.println("Please enter some data:");
         this.data = data;
     }
 
