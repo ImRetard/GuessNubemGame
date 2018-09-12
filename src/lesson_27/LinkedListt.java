@@ -17,7 +17,7 @@ public class LinkedListt {
         }
     }
 
-    public void deleteItem() {
+    public Node deleteItem() {
         Scanner ch = new Scanner(System.in);
         System.out.println("\nEnter search data: ");
         int data = ch.nextInt();
@@ -28,7 +28,7 @@ public class LinkedListt {
 
         if (currentNode != null && currentNode.data == data) {
             head=currentNode.nextNode;
-            return;
+            return null;
         }
         while (currentNode != null && currentNode.data != data) {
             previous = currentNode;
@@ -36,10 +36,11 @@ public class LinkedListt {
         }
         if(currentNode==null){
             System.out.println("No element with such data");
-            return;
+            return null;
 
         }
         previous.nextNode = currentNode.nextNode;
+        return currentNode;
 
     }
 

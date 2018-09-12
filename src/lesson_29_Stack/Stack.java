@@ -1,4 +1,4 @@
-package Stack;
+package lesson_29_Stack;
 
 public class Stack {
     private int mSize; //mSize - максимальный размер
@@ -11,10 +11,17 @@ public class Stack {
         top = -1;
     }
     public void addElement(int element) {
-        stackArray[++top] = element;
+        if(isFull()){
+            System.out.println("Stack overflow");
+        }else stackArray[++top] = element;
+
+        //isFull() ? System.out.println("Stack overflow") :  (stackArray[++top] = element);
     }
     public int deleteElement() {
-        return stackArray[top--];
+        if(isEmpty()){
+            System.out.println("Stack is empty");
+            return 0;
+        }else return stackArray[top--];
     }
 
     @Override
@@ -29,7 +36,11 @@ public class Stack {
     public int readTop() {
         return stackArray[top];
     }
+
     public boolean isEmpty() {
         return (top == -1);
+    }
+    public boolean isFull (){
+        return (top==mSize-1);
     }
 }
