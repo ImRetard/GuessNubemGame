@@ -1,4 +1,5 @@
-package lessons_26;
+/*
+package lesson_26;
 
 public class QuickSorting extends Sorting{
     public QuickSorting() {
@@ -44,16 +45,20 @@ public class QuickSorting extends Sorting{
     }
 
 
-    /* The main function that implements QuickSort()
+    */
+/* The main function that implements QuickSort()
       arr[] --> Array to be sorted,
       low  --> Starting index,
-      high  --> Ending index */
+      high  --> Ending index *//*
+
    private void sort(int arr[], int low, int high)
     {
         if (low < high)
         {
-            /* pi is partitioning index, arr[pi] is
-              now at right place */
+            */
+/* pi is partitioning index, arr[pi] is
+              now at right place *//*
+
             int pi = partition(arr, low, high);
 
             // Recursively sort elements before
@@ -63,3 +68,4 @@ public class QuickSorting extends Sorting{
         }
     }
 }
+*/
