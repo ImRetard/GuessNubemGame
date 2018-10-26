@@ -1,8 +1,9 @@
 package lesson_19;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Box {
+public class Box implements Comparable<Box> {
     private int h;
     private int vv;
     private int d;
@@ -89,5 +90,14 @@ public double getVolume(){
     public int hashCode() {
 
         return Objects.hash(h, vv, d);
+    }
+
+    public int compare(Box o1, Box o2) {
+        return 0;
+    }
+
+    @Override
+    public int compareTo(Box someBox) {
+        return Double.compare(this.getVolume(),someBox.getVolume());
     }
 }
