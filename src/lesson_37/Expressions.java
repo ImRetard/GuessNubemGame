@@ -5,8 +5,8 @@ import java.util.Stack;
 
 public class Expressions {
     public static void main(String[] args) {
-        String expression = "(15-8)*33-12";
-        evaluate(expression);
+        String expression = "(1+2)*4-3";
+        System.out.println(evaluate(expression));;
     }
 
     public static int evaluate(String expression) {
@@ -15,26 +15,47 @@ public class Expressions {
         //Insert blanks
         expression = insertBlanks(expression);
 
-       String[] elements =  expression.split(" ");
+        String[] elements = expression.split(" ");
 
-       //scan elements
-        for(String item:elements){
+        //scan elements
+        for (String item : elements) {
             //ignore blanks
-            if(item.length()==0){
+            if (item.length() == 0) {
                 continue;
-            }else if(item.charAt(0)=='+'&&item.charAt(0)=='-'){
-                while(!operators.isEmpty()&&
+            } else if (item.charAt(0) == '+' || item.charAt(0) == '-') {
+                while (!operators.isEmpty() &&
                         (operators.peek() == '+' ||
                                 operators.peek() == '-' ||
                                 operators.peek() == '*' ||
-                                operators.peek() == '/')){
+                                operators.peek() == '/')) {
                     processAnOperator(operands, operators);
 
                 }
-            }
+                operators.push(item.charAt(0));
+            } else if (item.charAt(0) == '*' || item.charAt(0) == '/') {
+                while (!operators.isEmpty() &&
+                        (
+                                operators.peek() == '*' ||
+                                        operators.peek() == '/')) {
+                    processAnOperator(operands, operators);
+
+                }
+                operators.push(item.charAt(0));
+            } else if (item.trim().charAt(0) == '(') {
+                operators.push('(');
+            } else if (item.trim().charAt(0) == ')') {
+                while (operators.peek()!='('){
+                    processAnOperator(operands, operators);
+                }
+                operators.pop();
+            }else {operands.push(Integer.parseInt(item));}
         }
 
-        return 0;
+        while(!operators.isEmpty()){
+            processAnOperator(operands, operators);
+        }
+
+        return operands.pop();
 
     }
 
@@ -43,10 +64,15 @@ public class Expressions {
         int op1 = operands.pop();
         int op2 = operands.pop();
 
-        if(op1 == '+'){
-            operands.push(op1+op2);
+        if (operator == '+') {
+            operands.push(op1 + op2);
+        } else if (operator == '-') {
+            operands.push(op1 - op2);
+        } else if (operator == '*') {
+            operands.push(op1 * op2);
+        } else if (operator == '/') {
+            operands.push(op1 / op2);
         }
-
 
 
     }

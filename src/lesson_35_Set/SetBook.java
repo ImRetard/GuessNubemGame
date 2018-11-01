@@ -59,7 +59,7 @@ public class SetBook {
 
 }
 
-
+//todo contains all, retain all;
 /*
 
   String[] text = new String[0];
